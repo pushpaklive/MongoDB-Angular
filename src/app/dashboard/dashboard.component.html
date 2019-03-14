@@ -1,0 +1,86 @@
+<button
+  type="button"
+  id="addItemBtn"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#addItemModal"
+>
+  Add Item
+</button>
+<hr>
+<!-- Modal -->
+<div class="modal fade" id="addItemModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Add new item</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+        
+      </div>
+      <div class="modal-body">
+        <form
+          #itemsForm="ngForm"
+          ngSubmit="saveItem(itemsForm.value)"
+          novalidate
+        >
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="addedBy">Added By:</label>
+                <input id="addedBy" name="addedBy" [(ngModel)]="currentUser">
+              </div>
+              <div class="form-group">
+                <label for="comment">Items:</label>
+                <textarea class="form-control" rows="5" id="items" name="items" [(ngModel)]="items"></textarea>
+              </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                  <label for="comment">Price:</label>
+                  <input class="form-control" name="price" [(ngModel)]="price">
+                </div>
+                <div class="form-group">
+                  <label for="paidFor">Paid For:</label>
+                  <input class="form-control" name="paidFor" [(ngModel)]="paidFor" id="paidFor">
+                </div>
+                <button
+                class="btn btn-primary"
+                (click)="saveItem(itemsForm.value)"
+              >
+                Save
+              </button>
+              </div>
+            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="closeModalBtn" type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Added By</th>
+      <th>Items</th>
+      <th>Price</th>
+      <th>Heads</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of purchasedItemsList;let i = index;">
+    <td>{{item.addedBy}}</td>
+    <td>{{item.items}}</td>
+    <td>{{item.price}}</td>
+    <td>{{item.paidFor}}</td>
+    </tr>
+  </tbody>
+</table>

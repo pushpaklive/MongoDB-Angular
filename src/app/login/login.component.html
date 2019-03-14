@@ -1,0 +1,21 @@
+<div class="loginForm">
+  <h3>Who's here?</h3>
+  <form novalidate>
+    <div class="row">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="username"
+        />
+      </div>
+     
+      <div class="col-4">
+        <button class="btn btn-success" (click)="checkUser()">
+          Login
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
